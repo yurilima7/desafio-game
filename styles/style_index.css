@@ -190,6 +190,7 @@ main {
     border: 3px solid #000;
     border-radius: 30px;
     background: none;
+    font-size: 16px;
 }
 
 ::placeholder {
@@ -208,9 +209,10 @@ main {
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
-    cursor: pointer;
+    cursor: pointer; 
     width: 50%;
     font-size: 16px;
+    margin-left: 25%;
 }
 
 .btn-register:hover {
