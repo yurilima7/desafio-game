@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Alice&family=Allerta&display=swap" rel="stylesheet">
     <title>Página Inicial</title>
     <link rel="stylesheet" href="styles/style_index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><!--  -->
 </head>
 <body>
     <header>
@@ -23,6 +25,51 @@
     </header>
 
     <main>
+
+        <div class="main-principal">
+
+            <section class="game-info">
+                <h1 class="game-info-title">Titulo do jogo</h1>
+                <p class="game-info-description">descrição breve</p>
+            </section>
+
+            <section class="registration-form">
+                <form>
+                    <div class="input-group">
+                        <img src="./img/username.png" alt="User Icon">
+                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Nome completo">
+                    </div>
+                    <div class="input-group">
+                        <img src="./img/email.png" alt="Email Icon">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <img src="./img/password.png" alt="Password Icon">
+                        <input type="password" id="senha" name="senha" placeholder="Senha">
+                    </div>
+                    <button type="submit" class="btn-register">Cadastre-se</button>
+                </form>
+                <p class="login-link"><a href="./pages/login.html">Já tem uma conta? Faça login</a>
+            </section>
+        </div>
+
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              <div class="swiper-slide"><img src="./img/flappy-bird-background-keprpujsqmml4mlo.jpg" alt=""></div>
+              
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+          
+          </div>
         
     </main>
 
@@ -52,5 +99,39 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            spaceBetween: 30,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+                1440: {
+                    slidesPerView: 5,
+                }
+            },
+            loop: true,
+        
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true,
+            },
+        
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },  
+        });
+    </script>
 </body>
 </html>
