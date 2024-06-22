@@ -58,11 +58,6 @@ nav {
     text-underline-offset: 8px;
 }
 
-/* MAIN */
-main {
-    height: 200px;
-}
-
 /* FOOTER */
 .footer-style {
     display: flex;
@@ -238,6 +233,10 @@ main {
     margin-bottom: 50px;
 }
 
+.swiper-wrapper {
+    padding: 0 20px;
+}
+
 .swiper-pagination {
     position: initial;
     margin: .5em 0;
@@ -264,7 +263,12 @@ main {
     }
 
     .main-principal {
-        padding-top: 40px;
+        padding: 40px 20px 10px 20px;
+        flex-direction: column;
+    }
+
+    .game-info {
+        width: 100%
     }
 }
 
@@ -280,5 +284,9 @@ main {
 
     .address {
         font-size: 1rem;
+    }
+
+    .swiper-slide img {
+        width: 90%;
     }
 }
