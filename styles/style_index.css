@@ -153,9 +153,14 @@ main {
 }
 
 .game-info-title {
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: 200;
     color: var(--black-color);
+}
+
+.game-info-description {
+    font-size: 1rem;
+    padding-bottom: 10px;
 }
 
 /* REGISTRATION FORM */
@@ -268,7 +273,14 @@ main {
     }
 
     .game-info {
-        width: 100%
+        width: 100%;
+        font-size: 1rem,
+    }
+
+    .game-info-title {
+        font-size: 2rem;
+        font-weight: 200;
+        color: var(--black-color);
     }
 }
 
