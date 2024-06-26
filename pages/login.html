@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div id="container-login">
+        <form action="download-2.html" id="loginForm">
+            <div class="input-login-container">
+                <img src="/img/mail.png" alt="logo email">
+                <input type="email" name="email" class="input-login" placeholder="Email" required>
+            </div>
+    
+            <div class="input-login-container">
+                <img src="/img/key.png" alt="logo senha">
+                <input type="password" name="senha" class="input-login" placeholder="Senha" required>
+            </div>
+    
+            <button id="submit">Login</button>
+    
+            <a href="#" id="forgot-password">
+                <h5>Esqueceu sua senha?</h5>
+            </a>
+        </form>
+    </div>
+    
+    <script>
+        const loginForm = document.getElementById('loginForm');
+    
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+    
+            const formData = new FormData(loginForm);
+            const credentials = {
+                email: formData.get('email'),
+                password: formData.get('senha')
+            };
+    
+            try {
+                const response = await fetch('http://localhost:3010/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(credentials)
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Credenciais inválidas');
+                }
+    
+                const { token } = await response.json();
+                console.log('Token JWT recebido:', token);
+                alert('Login realizado com sucesso!');
+            } catch (error) {
+                console.error('Erro ao fazer login:', error.message);
+                alert('Erro ao fazer login');
+            }
+        });
+    </script>
+    
+
+    </div>
+</body>
+</html>
