@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(loginForm);
+            const credentials = {
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+
+            try {
+                const response = await fetch('http://localhost:3010/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(credentials)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Credenciais inválidas');
+                }
+
+                const { token } = await response.json();
+                console.log('Token JWT recebido:', token);
+                alert('Login realizado com sucesso!');
+                // Armazenar o token em localStorage ou sessionStorage e redirecionar para outra página
+            } catch (error) {
+                console.error('Erro ao fazer login:', error.message);
+                alert('Erro ao fazer login');
+            }
+        });
+    </script>
+</body>
+</html>
