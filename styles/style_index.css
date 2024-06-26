@@ -92,7 +92,7 @@ nav {
     margin-top: 10px;
     font-family: var(--font-alice-regular);
     font-size: 1rem;
-    color: var(--white-color);
+    color: var (--white-color);
 }
 
 .address {
@@ -137,8 +137,9 @@ main {
 
 .main-principal {
     display: flex; 
-    justify-content: space-evenly;
+    justify-content: space-between;  /* Alinha os itens com espaço entre eles */
     padding-bottom: 100px;
+    flex-wrap: wrap;  /* Permite que os itens se encaixem em várias linhas, se necessário */
 }
 
 .game-info {
@@ -169,6 +170,7 @@ main {
     padding: 20px;
     width: 100%;
     max-width: 380px;
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
 }
 
 .input-group {
@@ -235,7 +237,8 @@ main {
 
 /* SWIPER */
 .swiper {
-    margin-bottom: 50px;
+    margin: 50px auto; /* Centraliza o Swiper horizontalmente */
+    width: 90%;
 }
 
 .swiper-wrapper {
@@ -270,6 +273,7 @@ main {
     .main-principal {
         padding: 40px 20px 10px 20px;
         flex-direction: column;
+        align-items: center;  /* Centraliza os itens no eixo horizontal */
     }
 
     .game-info {
@@ -281,6 +285,10 @@ main {
         font-size: 2rem;
         font-weight: 200;
         color: var(--black-color);
+    }
+
+    .swiper {
+        width: 100%;
     }
 }
 

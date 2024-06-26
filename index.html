@@ -37,25 +37,105 @@
             </section>
 
             <section class="registration-form">
-                <form action="./pages/download-1.html">
+                <form id="registrationForm">
                     <div class="input-group">
                         <img src="./img/username.png" alt="User Icon">
-                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Nome completo">
+                        <input type="text" id="nome-completo" name="nome-completo" placeholder="Nome completo" required>
                     </div>
                     <div class="input-group">
                         <img src="./img/email.png" alt="Email Icon">
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="input-group">
                         <img src="./img/password.png" alt="Password Icon">
-                        <input type="password" id="senha" name="senha" placeholder="Senha">
+                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
                     </div>
                     <button type="submit" class="btn-register">Cadastre-se</button>
                 </form>
-                <p class="login-link"><a href="./pages/login.html">Já tem uma conta? Faça login</a>
+                <p class="login-link">
+                    <a href="./pages/login.html">Já tem uma conta? Faça login</a>
+                </p>
             </section>
-        </div>
+            
+            <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const registrationForm = document.getElementById('registrationForm');
+                
+                if (registrationForm) {
+                    registrationForm.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+                        
+                        const formData = new FormData(registrationForm);
+                        const userDetails = {
+                            nomeCompleto: formData.get('nome-completo'),
+                            email: formData.get('email'),
+                            senha: formData.get('senha')
+                        };
+                        
+                        try {
+                            const response = await fetch('http://localhost:3010/api/register', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(userDetails)
+                            });
+                            
+                            if (!response.ok) {
+                                throw new Error('Erro ao registrar');
+                            }
+                            
+                            const result = await response.json();
+                            console.log('Registro realizado com sucesso:', result);
+                            alert('Registro realizado com sucesso!');
+                        } catch (error) {
+                            console.error('Erro ao registrar:', error.message);
+                            alert('Erro ao registrar');
+                        }
+                    });
+                }
+                
+                const loginForm = document.getElementById('loginForm');
+                
+                if (loginForm) {
+                    loginForm.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+                        
+                        const formData = new FormData(loginForm);
+                        const credentials = {
+                            email: formData.get('email'),
+                            password: formData.get('password')
+                        };
+                        
+                        try {
+                            const response = await fetch('http://localhost:3010/api/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(credentials)
+                            });
+                            
+                            if (!response.ok) {
+                                throw new Error('Credenciais inválidas');
+                            }
+                            
+                            const { token } = await response.json();
+                            console.log('Token JWT recebido:', token);
+                            alert('Login realizado com sucesso!');
+                        } catch (error) {
+                            console.error('Erro ao fazer login:', error.message);
+                            alert('Erro ao fazer login');
+                        }
+                    });
+                }
+            });
+            </script>
+            
 
+            <br><br>
+            <br><br>
+            
         <div class="swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
